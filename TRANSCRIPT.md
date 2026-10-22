@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: 4ee2ce89-de5e-415b-a696-751358d755e9 | 2026-10-20T19:22:28.216Z -->
 ## Session `4ee2ce89`, 2026-10-20 19:22:28
 
-*11 user turns. Tool outputs and reasoning omitted.*
+*12 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 *(ran `/setup`)*
@@ -245,5 +245,37 @@ since embedding search can give more of a general context i think it would do be
 - 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Refresh transcript, commit Part 0, and push
 - 🔧 `Read`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/tfidf_settings.py
+- 🔧 `Bash`: Check for template updates
+Your second prediction now reads:
+
+```
+### Vague descriptions: which method will do better, and why?
+
+since embedding search can give more of a general context i think it would do better
+```
+
+Setup is done, and your predictions are saved on GitHub as `Part 0 done`.
+
+**Part 1: Build the TF-IDF model** (about 6 minutes). Most students reach Part 3 or 4 in class. The rest is due 8:00am Thursday, October 22, and Part 5 is fine to do at home.
+
+[tfidf_settings.py](tfidf_settings.py) has three settings. Words are always lowercased first, so "Dog" and "dog" count as one word.
+
+**1. `REMOVE_STOP_WORDS`**: `True` or `False`, now `False`.
+When `True`, about 300 common English words are dropped before scoring. Take "The ghost of a sailor haunts the ship." It becomes "ghost sailor haunts ship". The list is scikit-learn's, and it goes beyond "the" and "of". It also drops words like "bill", "fire", "name" and "system", and the number words "one" to "twelve", except "seven".
+
+**2. `MIN_MOVIES`**: a whole number, 1 or more, now `1`.
+A word is kept only if it appears in at least this many plot summaries. At 3, a name that shows up in just one or two summaries is dropped. Only 1 keeps a word found in a single summary.
+
+**3. `REPEATS_COUNT_LESS`**: `True` or `False`, now `False`.
+When `True`, a word repeated in one summary counts as 1 + log(count) instead of its full count. If "shark" appears 4 times, it counts as about 2.4 instead of 4.
+
+**What are your three choices, each with a reason?** Keeping the file's value counts as a choice too, and needs a reason like the others. A sentence for each is enough.
+
+**User:**
+for 1. it should be true, to make sure identifying words like "ghost" or "sailor" matter more. for 2. making it = 2 could help with typos, and 3. should be true, to make sure a common word is not getting more weight than an identifying one
+
+**Claude:**
+- 🔧 `Bash`: Set the three TF-IDF settings to the student's values
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
 
 <!-- end-session: 4ee2ce89-de5e-415b-a696-751358d755e9 -->
