@@ -28,7 +28,7 @@ since embedding search can give more of a general context i think it would do be
 
 ### Your movies: what do the top terms get right and wrong about what makes each one distinctive?
 
-XXXX
+percy: its pretty good terms, with percy being the top 1 (makes sense). pride & prejudice: there's more "sentence" words and not description terms, but still gets the hang of the movie plot.
 
 ## Part 3: Your own searches
 
