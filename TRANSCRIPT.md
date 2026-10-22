@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: 4ee2ce89-de5e-415b-a696-751358d755e9 | 2026-10-20T19:22:28.216Z -->
 ## Session `4ee2ce89`, 2026-10-20 19:22:28
 
-*12 user turns. Tool outputs and reasoning omitted.*
+*15 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 *(ran `/setup`)*
@@ -277,5 +277,113 @@ for 1. it should be true, to make sure identifying words like "ghost" or "sailor
 **Claude:**
 - 🔧 `Bash`: Set the three TF-IDF settings to the student's values
 - 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 1, push, and check template updates
+Your settings are in [tfidf_settings.py](tfidf_settings.py):
+
+```
+REMOVE_STOP_WORDS = True
+MIN_MOVIES = 2
+REPEATS_COUNT_LESS = True
+```
+
+The slot now reads:
+
+```
+### The settings you chose, and why
+
+- `REMOVE_STOP_WORDS = True`: to make sure identifying words like "ghost" or "sailor" matter more.
+- `MIN_MOVIES = 2`: making it = 2 could help with typos.
+- `REPEATS_COUNT_LESS = True`: to make sure a common word is not getting more weight than an identifying one.
+```
+
+Part 1 is saved on GitHub as `Part 1 done`.
+
+**Part 2: Top terms** (about 6 minutes). The packages are installed, so the script is ready to run. It lists the words with the highest TF-IDF weight in one movie's plot summary. The movies you rated in HW1 are in the collection.
+
+**Which two movies do you know well?**
+
+**User:**
+Percy Jackson (first one), Pride and prejudice
+
+**Claude:**
+- 🔧 `Bash`: Show top TF-IDF terms for the two movies
+Here's what printed for each:
+
+```
+Percy Jackson & the Olympians: The Lightning Thief (2010): the 15 words with the highest TF-IDF weight in its plot summary.
+
+     word               weight  count here  movies
+  1. percy               0.461           2       2
+  2. poseidon            0.272           1       2
+  3. zeus                0.250           1       5
+  4. gods                0.250           1       5
+  5. prone               0.244           1       6
+  6. needed              0.240           1       7
+  7. lightning           0.236           1       8
+  8. skills              0.200           1      26
+  9. god                 0.197           1      29
+ 10. actually            0.193           1      32
+ 11. entire              0.190           1      36
+ 12. stolen              0.188           1      38
+ 13. prevent             0.185           1      41
+ 14. master              0.182           1      45
+ 15. teenager            0.181           1      47
+
+count here: how many times the word is in this plot summary. movies: how many of the 4,309 plot summaries have it.
+
+The plot summary: Accident prone teenager, Percy discovers he's actually a demi-God, the son of Poseidon, and he is needed when Zeus' lightning is stolen. Percy must master his new found skills in order to prevent a war between the Gods that could devastate the entire world.
+
+Your settings: REMOVE_STOP_WORDS = True, MIN_MOVIES = 2, REPEATS_COUNT_LESS = True.
+==========
+No movie title matches "Pride and prejudice".
+Close ones: Pride & Prejudice (2005); Live and Let Die (1973); Romeo and Juliet (1968); Hide and Seek (2005)
+```
+
+Percy Jackson matched. "Pride and prejudice" didn't match exactly, because the collection's title uses "&".
+
+**Do you mean Pride & Prejudice (2005)?**
+
+**User:**
+yes
+
+**Claude:**
+- 🔧 `Bash`: Show top TF-IDF terms for Pride & Prejudice
+```
+Pride & Prejudice (2005): the 15 words with the highest TF-IDF weight in its plot summary.
+
+     word               weight  count here  movies
+  1. daughters           0.356           2      14
+  2. georgian            0.261           1       2
+  3. marriages           0.261           1       2
+  4. dependent           0.252           1       3
+  5. landed              0.239           1       5
+  6. overbearing         0.234           1       6
+  7. inherited           0.226           1       8
+  8. era                 0.208           1      15
+  9. cousin              0.201           1      19
+ 10. happiness           0.200           1      20
+ 11. distant             0.194           1      24
+ 12. met                 0.189           1      28
+ 13. security            0.183           1      34
+ 14. english             0.183           1      34
+ 15. dies                0.179           1      39
+
+count here: how many times the word is in this plot summary. movies: how many of the 4,309 plot summaries have it.
+
+The plot summary: A story of love and life among the landed English gentry during the Georgian era. Mr. Bennet is a gentleman living in Hertfordshire with his overbearing wife and five daughters, but if he dies their house will be inherited by a distant cousin whom they have never met, so the family's future happiness and security is dependent on the daughters making good marriages.
+
+Your settings: REMOVE_STOP_WORDS = True, MIN_MOVIES = 2, REPEATS_COUNT_LESS = True.
+```
+
+You now have the top terms for both movies.
+
+**What do the top terms get right and wrong about what makes each one distinctive?** A sentence or two per movie is enough.
+
+**User:**
+percy: its pretty good terms, with percy being the top 1 (makes sense). pride & prejudice: there's more "sentence" words and not description terms, but still gets the hang of the movie plot.
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 2, push, and check template updates
 
 <!-- end-session: 4ee2ce89-de5e-415b-a696-751358d755e9 -->
