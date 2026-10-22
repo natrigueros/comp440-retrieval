@@ -10,11 +10,11 @@ Part 0 predictions stay as you first wrote them; Part 5 asks what you would chan
 
 ### Questions that name a character, place or thing: which method will do better, and why?
 
-XXXX
+I think keyword search will do better, probably on a character, especially if it's unique to the movie and not a common name, because it will look for a match for that specific word.
 
 ### Vague descriptions: which method will do better, and why?
 
-XXXX
+since embedding search can give more of a general context i think it would do better
 
 ## Part 1: Build the TF-IDF model
 
