@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: 4ee2ce89-de5e-415b-a696-751358d755e9 | 2026-10-20T19:22:28.216Z -->
 ## Session `4ee2ce89`, 2026-10-20 19:22:28
 
-*15 user turns. Tool outputs and reasoning omitted.*
+*19 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 *(ran `/setup`)*
@@ -385,5 +385,113 @@ percy: its pretty good terms, with percy being the top 1 (makes sense). pride & 
 **Claude:**
 - 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Commit Part 2, push, and check template updates
+Your answer now reads:
+
+```
+### Your movies: what do the top terms get right and wrong about what makes each one distinctive?
+
+percy: its pretty good terms, with percy being the top 1 (makes sense). pride & prejudice: there's more "sentence" words and not description terms, but still gets the hang of the movie plot.
+```
+
+Part 2 is saved on GitHub as `Part 2 done`.
+
+**Part 3: Your own searches** (about 7 minutes). You'll run three searches. Each one shows TF-IDF's top 10 movies for your question.
+
+**What's your first question?** For example, describe a movie you know in your own words, without its title.
+
+**User:**
+There's this movie about a woman who has a car crash and suddenly gets this disease that makes her unable to age. She falls in love with this boy but has to move because after years she doesn't age, and then decades after falls in love with that boy's son.
+
+**Claude:**
+- 🔧 `Bash`: Run TF-IDF search on the student's first question
+```
+Question: There's this movie about a woman who has a car crash and suddenly gets this disease that makes her unable to age. She falls in ...
+
+TF-IDF, top 10:
+   1. 0.232  Laura (1944)   matched: falls, love, woman
+   2. 0.221  Boyhood (2014)   matched: age, boy, son, years
+   3. 0.190  Village of the Damned (1960)   matched: age, falls, suddenly, woman
+   4. 0.179  Philomena (2013)   matched: decades, son, woman
+   5. 0.175  Bounce (2000)   matched: falls, crash, love
+   6. 0.173  Riding in Cars with Boys (2001)   matched: age, son, woman
+   7. 0.163  Arsenic and Old Lace (1944)   matched: falls, suddenly, makes, love, gets
+   8. 0.160  Age of Innocence, The (1993)   matched: falls, woman, love
+   9. 0.151  Little Women (2019)   matched: age
+  10. 0.146  For Love of the Game (1999)   matched: age, years, woman
+      Ignored as stop words: there, this, about, who, has, and, that, her, to, she, in, with, but, move, because and 2 more.
+```
+
+The number before each title is its TF-IDF score. "matched" lists the words from your question that are in that movie's summary.
+
+**What's your second question?**
+
+**User:**
+Small town, rich girl poor guy, separation, cheating, white house, blue shutters, dementia
+
+**Claude:**
+- 🔧 `Bash`: Run TF-IDF search on the student's second question
+```
+Question: Small town, rich girl poor guy, separation, cheating, white house, blue shutters, dementia
+
+TF-IDF, top 10:
+   1. 0.172  Crazy/Beautiful (2001)   matched: poor, girl
+   2. 0.171  Body Heat (1981)   matched: rich, small, town
+   3. 0.156  Metropolis (1927)   matched: poor, rich
+   4. 0.154  Slumdog Millionaire (2008)   matched: cheating
+   5. 0.152  Snow White and the Seven Dwarfs (1937)   matched: white, house, girl
+   6. 0.143  Mississippi Burning (1988)   matched: small, town, white
+   7. 0.142  Outbreak (1995)   matched: white, house, small, town
+   8. 0.141  5 Centimeters per Second (Byôsoku 5 senchimêtoru) (2007)   matched: separation
+   9. 0.141  Other Woman, The (2014)   matched: cheating
+  10. 0.135  Bridge to Terabithia (2007)   matched: poor, rich, girl
+      Not in the vocabulary (in fewer than 2 summaries, or none): shutters, dementia.
+```
+
+The last line lists words from your question that the model doesn't have. Each one is in fewer than 2 plot summaries, or in none.
+
+**What's your third question?**
+
+**User:**
+the world is ending because of climate and a group of scientists send people into space to figure out if other planets are viable for life
+
+**Claude:**
+- 🔧 `Bash`: Run TF-IDF search on the student's third question
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+```
+Question: the world is ending because of climate and a group of scientists send people into space to figure out if other planets are viable for ...
+
+TF-IDF, top 10:
+   1. 0.149  Andromeda Strain, The (1971)   matched: scientists, space, people, group, life
+   2. 0.138  AVP: Alien vs. Predator (2004)   matched: send, scientists
+   3. 0.128  Incendies (2010)   matched: ending, send
+   4. 0.122  Devil (2010)   matched: people, group
+   5. 0.116  Dish, The (2001)   matched: scientists, group
+   6. 0.112  Stagecoach (1939)   matched: people, group
+   7. 0.111  Dawn of the Planet of the Apes (2014)   matched: scientists, group
+   8. 0.110  Chinatown (1974)   matched: climate, world
+   9. 0.108  Thing, The (1982)   matched: scientists, life
+  10. 0.107  Doom Runners (1997)   matched: group, world
+      Ignored as stop words: the, is, because, of, and, into, to, out, if, other, are, for.
+      Not in the vocabulary (in fewer than 2 summaries, or none): viable.
+```
+
+I wrote your three questions into the writeup, word for word:
+
+```
+### Your questions, as you typed them
+
+1. There's this movie about a woman who has a car crash and suddenly gets this disease that makes her unable to age. She falls in love with this boy but has to move because after years she doesn't age, and then decades after falls in love with that boy's son.
+2. Small town, rich girl poor guy, separation, cheating, white house, blue shutters, dementia
+3. the world is ending because of climate and a group of scientists send people into space to figure out if other planets are viable for life
+```
+
+**Did the movies you meant come up? What did TF-IDF get right and wrong?** A sentence or two is enough.
+
+**User:**
+None of my movies showed up. I think it just takes a few words and considers it enough for a match and by doing so misses some context.
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 3, push, and check template updates
 
 <!-- end-session: 4ee2ce89-de5e-415b-a696-751358d755e9 -->
