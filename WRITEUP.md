@@ -56,16 +56,16 @@ It just seems like the TF-IDF used mostly super common words like "rich" or "par
 
 ### What is a sentence embedding, in your own words?
 
-XXXX
+It seemed like it turns the description of a movie, like the actual words into number lists. If I understand this right, it would turn my description (my first Part 3 question) into a list of numbers, and identify a general context that it can match to the movie's plot summary number list.
 
 ### Where does each method do better, and why?
 
-XXXX
+TF: did better with specific character names like I thought. Embedding: is better at getting a general sense of a plot and matching it
 
 ### Your Part 0 predictions: which held, and which would you change?
 
-XXXX
+Im kinda surprised that I was close for both. TF did do better with specific words, and embedding did do better with general contexts
 
 ### How might you combine the two methods?
 
-XXXX
+by adding scores together to increase their chance of being right
