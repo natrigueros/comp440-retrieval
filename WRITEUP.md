@@ -34,11 +34,13 @@ percy: its pretty good terms, with percy being the top 1 (makes sense). pride & 
 
 ### Your questions, as you typed them
 
-XXXX
+1. There's this movie about a woman who has a car crash and suddenly gets this disease that makes her unable to age. She falls in love with this boy but has to move because after years she doesn't age, and then decades after falls in love with that boy's son.
+2. Small town, rich girl poor guy, separation, cheating, white house, blue shutters, dementia
+3. the world is ending because of climate and a group of scientists send people into space to figure out if other planets are viable for life
 
 ### Did the movies you meant come up? What did TF-IDF get right and wrong?
 
-XXXX
+None of my movies showed up. I think it just takes a few words and considers it enough for a match and by doing so misses some context.
 
 ## Part 4: The question bank
 
