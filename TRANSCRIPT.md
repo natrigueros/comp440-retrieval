@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: 4ee2ce89-de5e-415b-a696-751358d755e9 | 2026-10-20T19:22:28.216Z -->
 ## Session `4ee2ce89`, 2026-10-20 19:22:28
 
-*7 user turns. Tool outputs and reasoning omitted.*
+*11 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 *(ran `/setup`)*
@@ -184,5 +184,66 @@ Nayla Trigueros for the name
 **Claude:**
 - 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Refresh transcript and commit name and date
+Your name and today's date are now at the top of your writeup:
+
+```
+**Name:** Nayla Trigueros
+**Date:** October 20, 2026
+```
+
+That's committed as `Name and date`. The two package files stay uncommitted, as planned.
+
+**Part 0: Predictions** (about 10 minutes)
+
+Keyword search (TF-IDF) scores a movie by the words its plot summary shares with your question. Embedding search turns your question and each plot summary into a list of numbers. It ranks the movies whose numbers are closest to your question's.
+
+First prediction:
+
+**Questions that name a character, place or thing: which method will do better, and why?**
+
+A sentence or two is enough, and a guess is fine.
+
+**User:**
+Probably a character specially if its unique to the movie and not a common name.
+
+**Claude:**
+Your answer gives a reason, a unique character name, but it doesn't say which method you think will do better. **Which one: keyword search (TF-IDF) or embedding search?** I'll add it to your words.
+
+**User:**
+oh yes, i think keyword search will do better, again because it will look for a match for that spoecific word
+
+**Claude:**
+Your answer came in two messages, so here's a version that joins them. I fixed "spoecific" to "specific":
+
+> I think keyword search will do better, probably on a character, especially if it's unique to the movie and not a common name, because it will look for a match for that specific word.
+
+**Should I write that in, or would you rather I use your two messages exactly as you typed them?**
+
+**User:**
+sure
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+Your first prediction now reads:
+
+```
+### Questions that name a character, place or thing: which method will do better, and why?
+
+I think keyword search will do better, probably on a character, especially if it's unique to the movie and not a common name, because it will look for a match for that specific word.
+```
+
+Second prediction:
+
+**Vague descriptions: which method will do better, and why?**
+
+A sentence or two is enough, and a guess is fine.
+
+**User:**
+since embedding search can give more of a general context i think it would do better
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Refresh transcript, commit Part 0, and push
+- 🔧 `Read`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/tfidf_settings.py
 
 <!-- end-session: 4ee2ce89-de5e-415b-a696-751358d755e9 -->
