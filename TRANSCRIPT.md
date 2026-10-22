@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: 4ee2ce89-de5e-415b-a696-751358d755e9 | 2026-10-20T19:22:28.216Z -->
 ## Session `4ee2ce89`, 2026-10-20 19:22:28
 
-*19 user turns. Tool outputs and reasoning omitted.*
+*22 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 *(ran `/setup`)*
@@ -493,5 +493,81 @@ None of my movies showed up. I think it just takes a few words and considers it 
 **Claude:**
 - 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Commit Part 3, push, and check template updates
+Part 4 starts by running the whole question bank with TF-IDF.
+- 🔧 `Bash`: Score TF-IDF on the full question bank
+Your answer now reads:
+
+```
+### Did the movies you meant come up? What did TF-IDF get right and wrong?
+
+None of my movies showed up. I think it just takes a few words and considers it enough for a match and by doing so misses some context.
+```
+
+Part 3 is saved on GitHub as `Part 3 done`.
+
+**Part 4: The question bank** (about 9 minutes). This ran all 518 questions with your TF-IDF settings:
+
+```
+TF-IDF, with your settings: REMOVE_STOP_WORDS = True, MIN_MOVIES = 2, REPEATS_COUNT_LESS = True.
+Ran 518 questions against 4,309 movies in under a second.
+
+TF-IDF put the right movie first for 18 of 100 written questions and in the top 10 for 31.
+  Of the 34 detail questions, it put 18 first and 31 in the top 10.
+  Of the 33 reworded questions, it put 0 first and 0 in the top 10.
+  Of the 33 vague questions, it put 0 first and 0 in the top 10.
+It put the right movie first for 21 of 418 real requests and in the top 10 for 68.
+
+Saved every question's top 10 in results/tfidf.json. To look through them: uv run python site.py
+```
+
+The three kinds: "detail" names a character, place or thing, "reworded" retells the plot in other words, and "vague" is how you'd describe it to a friend.
+
+**Which kind of question did TF-IDF handle best, and which worst? By how much?** A sentence or two is enough.
+
+**User:**
+Seems like detail questions did best, and both reworded and vague did pretty bad, like literally 0 of them right.
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Show README's Part 4 section
+- 🔧 `Bash`: Start the comparison site
+- 🔧 `Bash`: Find README Part 4 and read the site's output
+- 🔧 `Read`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/README.md
+Your answer now reads:
+
+```
+### Which kind of question did TF-IDF handle best, and which worst? By how much?
+
+Seems like detail questions did best, and both reworded and vague did pretty bad, like literally 0 of them right.
+```
+
+One way this could mislead: each question counts just one movie as right, so a top 10 full of movies that also fit the description still scores as a miss.
+
+The site is running:
+
+```
+The site is running at http://localhost:8765. Stop it with Ctrl-C.
+```
+
+It should have opened in your browser. It shows one question at a time: the right movie, where TF-IDF ranked it, and TF-IDF's top 10 with the words each one shares with the question. To see only the questions where the right movie isn't in the top 10, pick "TF-IDF missed" in the Show menu. If you want to talk about a question, tell me its id, like w026.
+
+**Look through some of the misses. What do the ones you looked at have in common?** A sentence or two is enough.
+
+**User:**
+It just seems like the TF-IDF used mostly super common works like "rich" or "park" to identify movies.
+
+**Claude:**
+Before I write it in: did you mean "words" where you typed "works"? Here's the version with that one change:
+
+> It just seems like the TF-IDF used mostly super common words like "rich" or "park" to identify movies.
+
+**Should I write that version, or keep "works" as you typed it?**
+
+**User:**
+yes words
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 4 with TF-IDF results, push, check updates
 
 <!-- end-session: 4ee2ce89-de5e-415b-a696-751358d755e9 -->
