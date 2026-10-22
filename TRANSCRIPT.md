@@ -7,7 +7,7 @@ summarized as one-liners.
 <!-- transcript-session: 4ee2ce89-de5e-415b-a696-751358d755e9 | 2026-10-20T19:22:28.216Z -->
 ## Session `4ee2ce89`, 2026-10-20 19:22:28
 
-*22 user turns. Tool outputs and reasoning omitted.*
+*33 user turns. Tool outputs and reasoning omitted.*
 
 **User:**
 *(ran `/setup`)*
@@ -569,5 +569,202 @@ yes words
 **Claude:**
 - 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Commit Part 4 with TF-IDF results, push, check updates
+Model download already finished in setup. Starting the embedding run.
+- 🔧 `Bash`: Score embedding search on the full question bank
+Your answer now reads:
+
+```
+### The misses you looked at: what do they have in common?
+
+It just seems like the TF-IDF used mostly super common words like "rich" or "park" to identify movies.
+```
+
+One way this could mislead: a few misses you picked yourself may not be typical of all of them, since the striking ones are the ones that stand out.
+
+Part 4 is saved on GitHub as `Part 4 done`.
+
+**Part 5: Embeddings** (about 12 minutes). The model finished downloading during setup. The question bank is now running with embeddings in the background, which takes a minute or so.
+
+**What's a sentence embedding?** On October 1 you saw GloVe. It gave each word a list of numbers, and words used in similar contexts got similar lists. A sentence model does the same for a whole sentence or plot summary. It turns the text into one list of numbers, here 384 of them. Texts that mean similar things get lists that are close together, even when they share no words. Embedding search compares your question's list with each summary's list.
+
+**What is a sentence embedding, in your own words? Use one of your own Part 3 questions or movies as the example.** A sentence or two is enough.
+
+**User:**
+<task-notification>
+<task-id>btomewux6</task-id>
+<tool-use-id>toolu_014aH8pcGhMUTbYxsWkFodkJ</tool-use-id>
+<output-file>/private/tmp/claude-501/-Users-naylatrigueros-Documents-COMP-127-comp440-retrieval/4ee2ce89-de5e-415b-a696-751358d755e9/tasks/btomewux6.output</output-file>
+<status>completed</status>
+<summary>Background command "Score embedding search on the full question bank" completed (exit code 0)</summary>
+</task-notification>
+
+**Claude:**
+- 🔧 `Bash`: Show the last line of the embedding run
+- 🔧 `Bash`: Show the last line the run printed
+The embedding run finished. This is the last line it printed:
+
+```
+Saved every question's top 10 in results/embed.json. To look through them: uv run python site.py
+```
+
+I'll show you its scores once your embedding answer is in the writeup.
+
+**User:**
+It seemed like it turns the description of a movie, like the actual words into number lists
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+Your answer now reads:
+
+```
+### What is a sentence embedding, in your own words?
+
+It seemed like it turns the description of a movie, like the actual words into number lists
+```
+
+The question also asks for an example from your own work. **Which of your Part 3 questions or movies would you use, and what would happen to it?** A sentence is enough, and I'll add it after what you wrote.
+
+**User:**
+can you show me the part 3 questions again
+
+**Claude:**
+Here are your Part 3 questions from the writeup:
+
+```
+1. There's this movie about a woman who has a car crash and suddenly gets this disease that makes her unable to age. She falls in love with this boy but has to move because after years she doesn't age, and then decades after falls in love with that boy's son.
+2. Small town, rich girl poor guy, separation, cheating, white house, blue shutters, dementia
+3. the world is ending because of climate and a group of scientists send people into space to figure out if other planets are viable for life
+```
+
+Your movies from Part 2 were Percy Jackson & the Olympians: The Lightning Thief and Pride & Prejudice.
+
+**Which one would you use as your example, and what would happen to it?**
+
+**User:**
+If I understand this right, it would turn my description into a list of numbers, and identify a general context that it can match to the title
+
+**Claude:**
+That's close. One detail about how it works: the search compares your question's numbers with each movie's **plot summary** numbers, not with its title. The title only shows up at the end, as the label on the result. You can keep your wording or change it. The answer is yours.
+
+**Which of your descriptions do you mean, 1, 2 or 3?** I'll add it to your answer so the example is clear.
+
+**User:**
+oh I chose 1
+
+**Claude:**
+Here's your answer with the new part added. I kept your words, and the only addition is which question you meant:
+
+> It seemed like it turns the description of a movie, like the actual words into number lists. If I understand this right, it would turn my description (my first Part 3 question) into a list of numbers, and identify a general context that it can match to the title.
+
+**Should I write it in like this? Or do you want to change anything first, like "title"?**
+
+**User:**
+change it to the movie's plot summary number list
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Show the embedding run's full output
+Your answer now reads:
+
+```
+### What is a sentence embedding, in your own words?
+
+It seemed like it turns the description of a movie, like the actual words into number lists. If I understand this right, it would turn my description (my first Part 3 question) into a list of numbers, and identify a general context that it can match to the movie's plot summary number list.
+```
+
+Here's the embedding run's output:
+
+```
+Embedding 518 questions. This can take a minute.
+Ran 518 questions against 4,309 movies in 10 seconds.
+
+Embeddings put the right movie first for 31 of 100 written questions and in the top 10 for 59.
+  Of the 34 detail questions, they put 24 first and 31 in the top 10.
+  Of the 33 reworded questions, they put 4 first and 18 in the top 10.
+  Of the 33 vague questions, they put 3 first and 10 in the top 10.
+They put the right movie first for 32 of 418 real requests and in the top 10 for 81.
+
+The embedding model reads only about the first 200 words of a question, so it ignored the end of 62 of the 418 real requests.
+
+Saved every question's top 10 in results/embed.json. To look through them: uv run python site.py
+```
+
+Reload the site at http://localhost:8765. It now shows both methods. Its Show menu has three new choices, each with a count: "TF-IDF did better", "Embeddings did better" and "Both missed". If you'd like, I can also rerun your three Part 3 questions with both methods.
+
+**Look at one question from "TF-IDF did better" and one from "Embeddings did better", whichever you like. Tell me when you have.**
+
+**User:**
+tf did better: a quiet place, embedding did better: clueless
+
+**Claude:**
+You've looked at one of each: A Quiet Place, where TF-IDF did better, and Clueless, where embeddings did better. If you want to talk through either one, tell me its id and I'll pull up what the page shows.
+
+**Where does each method do better, and why?** A sentence or two is enough.
+
+**User:**
+TF: did better with spcific character names like I thought.  Embedding: is better at getting a general sense of a plot and matching it
+
+**Claude:**
+Before I write it in: did you mean "specific" where you typed "spcific"? Here's the version with that one fix:
+
+> TF: did better with specific character names like I thought. Embedding: is better at getting a general sense of a plot and matching it
+
+**Should I write that version, or keep it exactly as you typed it?**
+
+**User:**
+write that
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+Your answer now reads:
+
+```
+### Where does each method do better, and why?
+
+TF: did better with specific character names like I thought. Embedding: is better at getting a general sense of a plot and matching it
+```
+
+One way this could mislead: A Quiet Place and Clueless are one question each, so either one could be an exception rather than the pattern.
+
+Here are your two Part 0 predictions, as you wrote them:
+
+```
+### Questions that name a character, place or thing: which method will do better, and why?
+
+I think keyword search will do better, probably on a character, especially if it's unique to the movie and not a common name, because it will look for a match for that specific word.
+
+### Vague descriptions: which method will do better, and why?
+
+since embedding search can give more of a general context i think it would do better
+```
+
+**Which held, and which would you now change, and why?** A sentence or two is enough.
+
+**User:**
+Im kinda surprised that I was close for both. TF did do better with specific words, and embedding did do better with general contexts
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+Your answer now reads:
+
+```
+### Your Part 0 predictions: which held, and which would you change?
+
+Im kinda surprised that I was close for both. TF did do better with specific words, and embedding did do better with general contexts
+```
+
+One score line goes the other way: on the 34 detail questions, embeddings put 24 first to TF-IDF's 18, and the two tied with 31 each in the top 10. You can change your answer any time if you want.
+
+Last question for Part 5. Thursday's class is about this, so a guess is fine.
+
+**How might you combine the two methods?** A sentence or two is enough.
+
+**User:**
+by adding scores together to increase their chance of being right
+
+**Claude:**
+- 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
+- 🔧 `Bash`: Commit Part 5 with results and push
+- 🔧 `Skill`: checkpoint
 
 <!-- end-session: 4ee2ce89-de5e-415b-a696-751358d755e9 -->
