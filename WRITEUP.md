@@ -20,7 +20,9 @@ since embedding search can give more of a general context i think it would do be
 
 ### The settings you chose, and why
 
-XXXX
+- `REMOVE_STOP_WORDS = True`: to make sure identifying words like "ghost" or "sailor" matter more.
+- `MIN_MOVIES = 2`: making it = 2 could help with typos.
+- `REPEATS_COUNT_LESS = True`: to make sure a common word is not getting more weight than an identifying one.
 
 ## Part 2: Top terms
 
