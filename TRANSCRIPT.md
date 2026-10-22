@@ -766,5 +766,6 @@ by adding scores together to increase their chance of being right
 - 🔧 `Edit`: /Users/naylatrigueros/Documents/COMP 127/comp440-retrieval/WRITEUP.md
 - 🔧 `Bash`: Commit Part 5 with results and push
 - 🔧 `Skill`: checkpoint
+- 🔧 `Bash`: Check that everything runs and list what is missing
 
 <!-- end-session: 4ee2ce89-de5e-415b-a696-751358d755e9 -->
