@@ -46,11 +46,11 @@ None of my movies showed up. I think it just takes a few words and considers it 
 
 ### Which kind of question did TF-IDF handle best, and which worst? By how much?
 
-XXXX
+Seems like detail questions did best, and both reworded and vague did pretty bad, like literally 0 of them right.
 
 ### The misses you looked at: what do they have in common?
 
-XXXX
+It just seems like the TF-IDF used mostly super common words like "rich" or "park" to identify movies.
 
 ## Part 5: Embeddings
 
